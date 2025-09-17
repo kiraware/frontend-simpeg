@@ -1,0 +1,13 @@
+export { default as dashboard } from './dashboard.vue';
+export { default as personalData } from './personalData.vue';
+export { default as personalDocument } from './personalDocument.vue';
+export { default as positions } from './positions.vue';
+export { default as educationHistory } from './educationHistory.vue';
+export { default as training } from './training.vue';
+export { default as titles } from './titles.vue';
+export { default as familyMembers } from './familyMembers.vue';
+export { default as achievement } from './achievement.vue';
+export { default as performanceAssessment } from './performanceAssessment.vue';
+export { default as profile } from './profile/profile.vue';
+export { default as changePassword } from './changePassword.vue';
+//export { default as editProfile }  from './profile/editProfile.vue';
