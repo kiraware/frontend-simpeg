@@ -79,14 +79,6 @@
               </label>
             </div>
 
-            <!-- Foto -->
-            <div>
-              <input type="file" @change="handleFileSelect" accept="image/*" />
-              <p class="text-xs text-gray-500 italic">
-                Upload foto baru (opsional, max 1 MB)
-              </p>
-            </div>
-
             <!-- Actions -->
             <div class="flex justify-end pt-4 space-x-6">
               <SaveButton type="submit" class="w-20" />
