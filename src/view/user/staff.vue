@@ -19,7 +19,6 @@
                 <th class="px-2 py-3 text-sm text-center text-gray-800 uppercase bg-white border-b border-gray-200">No.</th>
                 <th class="px-10 py-2 text-sm text-center text-gray-800 uppercase bg-white border-b border-gray-200">NIPM</th>
                 <th class="px-14 py-2 text-sm text-center text-gray-800 uppercase bg-white border-b border-gray-200">Nama</th>
-                <th class="px-10 py-2 text-sm text-center text-gray-800 uppercase bg-white border-b border-gray-200">Email</th>
                 <th class="px-14 py-2 text-sm text-center text-gray-800 uppercase bg-white border-b border-gray-200">Status</th>
                 <th class="px-14 py-2 text-sm text-center text-gray-800 uppercase bg-white border-b border-gray-200">Unit Kerja</th>
                 <th class="px-14 py-2 text-sm text-center text-gray-800 uppercase bg-white border-b border-gray-200">Aksi</th>
@@ -31,7 +30,6 @@
                   <td class="px-2 py-5 text-sm text-center border-b border-gray-200">{{ index + 1 }}</td>
                   <td class="px-4 py-2 text-sm text-center border-b border-gray-200">{{ s.nipm }}</td>
                   <td class="px-4 py-2 text-sm text-center border-b border-gray-200">{{ s.nama }}</td>
-                  <td class="px-4 py-2 text-sm text-center border-b border-gray-200">{{ s.email || '-' }}</td>
                   <td class="px-4 py-2 text-sm text-center border-b border-gray-200">{{ s.status_kepegawaian }}</td>
                   <td class="px-4 py-2 text-sm text-center border-b border-gray-200">{{ s.unit_kerja?.nama || '-' }}</td>
                   <td class="px-4 py-2 text-sm items-center border-b border-gray-200">

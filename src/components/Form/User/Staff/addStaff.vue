@@ -41,21 +41,6 @@
             </div>
             <span v-if="nipm && !validNipm" class="text-red-500 text-sm">NIPM harus 18 angka</span>
 
-            <!-- Email -->
-            <div class="relative">
-              <input type="email" v-model="email"
-                class="peer block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg 
-                       focus:border-blue-600 focus:outline-none"
-                placeholder=" " />
-              <label
-                class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2
-                       peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 
-                       peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 
-                       peer-focus:scale-75 peer-focus:-translate-y-4">
-                Email (opsional)
-              </label>
-            </div>
-
             <!-- Status Kepegawaian -->
             <div class="relative">
               <select v-model="status_kepegawaian" required
@@ -108,7 +93,6 @@ export default {
     const store = useStore()
     const nama = ref('')
     const nipm = ref('')
-    const email = ref('')
     const unit_kerja_id = ref('')
     const status_kepegawaian = ref('')
     const schools = ref([])
@@ -140,7 +124,6 @@ export default {
         await store.dispatch('staff/addStaff', {
           nama: nama.value,
           nipm: nipm.value,
-          email: email.value,
           unit_kerja_id: unit_kerja_id.value,
           status_kepegawaian: status_kepegawaian.value,
           file: file.value
@@ -166,7 +149,7 @@ export default {
       }
     })
 
-    return { nama, nipm, email, unit_kerja_id, status_kepegawaian, schools, file, loading, errorMessage, handleSubmit, closeModal, handleFileSelect, validNipm }
+    return { nama, nipm, unit_kerja_id, status_kepegawaian, schools, file, loading, errorMessage, handleSubmit, closeModal, handleFileSelect, validNipm }
   }
 }
 </script>

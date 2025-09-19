@@ -60,24 +60,6 @@
               NIPM harus 18 angka
             </span>
 
-            <!-- Email -->
-            <div class="relative">
-              <input 
-                type="email" 
-                v-model="email"
-                class="block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg 
-                       focus:border-blue-600 focus:outline-none peer"
-                placeholder=" " 
-              />
-              <label 
-                class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2 
-                       peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 
-                       peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 
-                       peer-focus:scale-75 peer-focus:-translate-y-4">
-                Email (opsional)
-              </label>
-            </div>
-
             <!-- Status Kepegawaian -->
             <div class="relative">
               <select v-model="status_kepegawaian" required
@@ -137,7 +119,6 @@ export default {
     // State
     const nama = ref('')
     const nipm = ref('')
-    const email = ref('')
     const status_kepegawaian = ref('')
     const file = ref(null)
     const isLoading = ref(false)
@@ -176,7 +157,6 @@ export default {
           id: props.id,
           nama: nama.value,
           nipm: nipm.value,
-          email: email.value,
           status_kepegawaian: status_kepegawaian.value,
           file: file.value
         })
@@ -197,7 +177,6 @@ export default {
         if (newVal) {
           nama.value = newVal.nama || ''
           nipm.value = newVal.nipm || ''
-          email.value = newVal.email || ''
           status_kepegawaian.value = newVal.status_kepegawaian || ''
         }
       },
@@ -205,7 +184,7 @@ export default {
     )
 
     return { 
-      nama, nipm, email, status_kepegawaian, file, 
+      nama, nipm, status_kepegawaian, file, 
       isLoading, errorMessage, validNipm, 
       handleSubmit, closeModal, handleFileSelect 
     }

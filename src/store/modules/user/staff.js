@@ -19,12 +19,11 @@ export default {
       }
     },
 
-    async addStaff(_, { nama, nipm, email, status_kepegawaian, file }) {
+    async addStaff(_, { nama, nipm, status_kepegawaian, file }) {
       try {
         const formData = new FormData();
         formData.append("nama", nama);
         formData.append("nipm", nipm);
-        formData.append("email", email);
         formData.append("status_kepegawaian", status_kepegawaian);
         if (file) {
           formData.append("file", file);
@@ -39,12 +38,11 @@ export default {
       }
     },
 
-    async updateStaff(_, { id, nama, nipm, email, status_kepegawaian, file }) {
+    async updateStaff(_, { id, nama, nipm, status_kepegawaian, file }) {
       try {
         const formData = new FormData();
         formData.append("nama", nama);
         formData.append("nipm", nipm);
-        formData.append("email", email);
         formData.append("status_kepegawaian", status_kepegawaian);
         if (file) {
           formData.append("file", file);
