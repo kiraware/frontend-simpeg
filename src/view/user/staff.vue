@@ -27,7 +27,9 @@
             <tbody class="bg-sky-50">
               <template v-if="staffList.length > 0">
                 <tr v-for="(s, index) in staffList" :key="s.id" class="divide-x">
-                  <td class="px-2 py-5 text-sm text-center border-b border-gray-200">{{ index + 1 }}</td>
+                  <td class="px-2 py-5 text-sm text-center border-b border-gray-200">
+                    {{ (currentPage - 1) * pageSize + index + 1 }}
+                  </td>
                   <td class="px-4 py-2 text-sm text-center border-b border-gray-200">{{ s.nipm }}</td>
                   <td class="px-4 py-2 text-sm text-center border-b border-gray-200">{{ s.nama }}</td>
                   <td class="px-4 py-2 text-sm text-center border-b border-gray-200">{{ s.status_kepegawaian }}</td>
@@ -49,6 +51,33 @@
               </template>
             </tbody>
           </table>
+        </div>
+
+        <!-- Pagination -->
+        <div v-if="totalPages > 1" class="flex justify-center items-center mt-4 space-x-2">
+          <button
+            @click="changePage(currentPage - 1)"
+            :disabled="currentPage === 1"
+            class="px-3 py-1 rounded bg-gray-200 text-sm font-semibold disabled:opacity-50"
+          >
+            Prev
+          </button>
+          <button
+            v-for="page in totalPages"
+            :key="page"
+            @click="changePage(page)"
+            class="px-3 py-1 rounded text-sm font-semibold"
+            :class="page === currentPage ? 'bg-sky-500 text-white' : 'bg-gray-200 text-gray-800'"
+          >
+            {{ page }}
+          </button>
+          <button
+            @click="changePage(currentPage + 1)"
+            :disabled="currentPage === totalPages"
+            class="px-3 py-1 rounded bg-gray-200 text-sm font-semibold disabled:opacity-50"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
@@ -74,10 +103,24 @@ export default {
   components: { addButton, editButton, deleteButton, addStaff, editStaff, alertConfirmation },
   setup() {
     const store = useStore();
+
+    // ambil staff dari store
     const staffList = computed(() => store.state.staff.staff);
 
+    // ambil pagination dari store
+    const pagination = computed(() => store.state.staff.pagination);
+
+    const currentPage = ref(1);
+    const pageSize = ref(10);
+
+    const totalPages = computed(() => pagination.value.last_page || 1);
+
+    const fetchStaff = async (page = 1) => {
+      await store.dispatch('staff/fetchStaff', { page, perPage: pageSize.value });
+    };
+
     onMounted(() => {
-      store.dispatch('staff/fetchStaff');
+      fetchStaff(currentPage.value);
     });
 
     const addStaff = ref(false);
@@ -92,14 +135,26 @@ export default {
     const deleteStaffConfirm = async () => {
       try {
         await store.dispatch('staff/deleteStaff', selectedStaff.value.id);
-        await store.dispatch('staff/fetchStaff');
+        await fetchStaff(currentPage.value);
         deleteStaff.value = false;
       } catch (error) {
         console.error("Error deleting staff:", error);
       }
     };
 
-    return { staffList, addStaff, editStaff, deleteStaff, selectedStaff, toggleAddStaff, toggleEditStaff, toggleDeleteStaff, deleteStaffConfirm };
+    const changePage = (page) => {
+      if (page >= 1 && page <= totalPages.value) {
+        currentPage.value = page;
+        fetchStaff(page);
+      }
+    };
+
+    return { 
+      staffList, pagination, totalPages, currentPage, pageSize,
+      addStaff, editStaff, deleteStaff, selectedStaff,
+      toggleAddStaff, toggleEditStaff, toggleDeleteStaff, deleteStaffConfirm,
+      changePage
+    };
   }
 };
 </script>
