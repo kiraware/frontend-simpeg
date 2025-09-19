@@ -10,11 +10,11 @@ import titles from './modules/user/titles';
 import families from './modules/user/families';
 import achievements from './modules/user/achievements';
 import performances from './modules/user/performances';
+import staff from './modules/user/staff';
 import users from './modules/admin/users';
 import schools from './modules/admin/schools';
 import details from './modules/admin/details';
 import verify from './modules/admin/verify';
-
 
 export default createStore({
   modules: {
@@ -33,6 +33,7 @@ export default createStore({
     schools,
     details,
     verify,
+    staff,
     // Add other modules here if needed
   },
 });
