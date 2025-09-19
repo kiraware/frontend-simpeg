@@ -13,9 +13,14 @@
             <!-- Nama -->
             <div class="relative">
               <input type="text" v-model="nama" required
-                class="block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg focus:border-blue-600 focus:outline-none peer"
+                class="peer block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg 
+                       focus:border-blue-600 focus:outline-none"
                 placeholder=" " />
-              <label class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+              <label
+                class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2
+                       peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 
+                       peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 
+                       peer-focus:scale-75 peer-focus:-translate-y-4">
                 Nama Staff
               </label>
             </div>
@@ -23,9 +28,14 @@
             <!-- NIPM -->
             <div class="relative">
               <input type="text" v-model="nipm" required pattern="[0-9]{18}"
-                class="block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg focus:border-blue-600 focus:outline-none peer"
+                class="peer block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg 
+                       focus:border-blue-600 focus:outline-none"
                 placeholder=" " />
-              <label class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+              <label
+                class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2
+                       peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 
+                       peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 
+                       peer-focus:scale-75 peer-focus:-translate-y-4">
                 NIPM (18 angka)
               </label>
             </div>
@@ -34,9 +44,14 @@
             <!-- Email -->
             <div class="relative">
               <input type="email" v-model="email"
-                class="block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg focus:border-blue-600 focus:outline-none peer"
+                class="peer block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg 
+                       focus:border-blue-600 focus:outline-none"
                 placeholder=" " />
-              <label class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+              <label
+                class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2
+                       peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 
+                       peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 
+                       peer-focus:scale-75 peer-focus:-translate-y-4">
                 Email (opsional)
               </label>
             </div>
@@ -44,13 +59,20 @@
             <!-- Status Kepegawaian -->
             <div class="relative">
               <select v-model="status_kepegawaian" required
-                class="pt-3 pb-2 block w-full px-2 border border-gray-400 rounded-lg focus:border-blue-600 focus:outline-none">
-                <option value="" selected disabled hidden></option>
+                class="peer block w-full px-2.5 pb-2 pt-4 text-sm border border-gray-400 rounded-lg 
+                       focus:border-blue-600 focus:outline-none">
+                <option disabled value=""> </option>
                 <option value="Tetap">Pegawai Tetap</option>
                 <option value="Tidak_Tetap">Pegawai Tidak Tetap</option>
                 <option value="Kontrak">Pegawai Kontrak</option>
               </select>
-              <label class="absolute text-sm top-3 bg-white px-2 text-gray-500">Pilih Status Pegawai</label>
+              <label
+                class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-2 bg-white px-2
+                       peer-placeholder-shown:scale-100 peer-placeholder-shown:top-1/2 
+                       peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 
+                       peer-focus:scale-75 peer-focus:-translate-y-4">
+                Pilih Status Pegawai
+              </label>
             </div>
 
             <!-- Foto -->
@@ -115,7 +137,6 @@ export default {
           return;
         } else validNipm.value = true;
 
-        console.log("Dispatch staff/addStaff...");
         await store.dispatch('staff/addStaff', {
           nama: nama.value,
           nipm: nipm.value,
@@ -124,7 +145,6 @@ export default {
           status_kepegawaian: status_kepegawaian.value,
           file: file.value
         });
-        console.log("Dispatch done");
 
         closeModal();
         window.location.reload();
@@ -135,7 +155,6 @@ export default {
         loading.value = false;
       }
     };
-
 
     onMounted(async () => {
       try {
