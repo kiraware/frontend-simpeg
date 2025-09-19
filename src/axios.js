@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://simpeg-backend-i5sbw2egaa-as.a.run.app/api/'; 
-axios.defaults.baseURL =  'https://api-pdmsleman.umy.ac.id/api/';
+// axios.defaults.baseURL =  'https://api-pdmsleman.umy.ac.id/api/';
+axios.defaults.baseURL =  'http://localhost:8080/api/';
 
 axios.interceptors.request.use(
     (config) => {

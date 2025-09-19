@@ -88,7 +88,12 @@ const routes = [
           name: 'changePassword',
           component: () => importViews('user').then((module) => module.changePassword),
           props: true,
-        }, 
+        },
+        {
+          path: 'staff',
+          name: 'staff',
+          component: () => importViews('user').then((module) => module.staff),
+        },
       ]
   },
   {

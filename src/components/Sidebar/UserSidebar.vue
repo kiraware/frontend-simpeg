@@ -40,6 +40,7 @@ export default {
         { label: 'Data Keluarga', icon: ['fas', 'people-roof'], to: '/user/family-members' },
         { label: 'Prestasi/Penghargaan', icon: ['fas', 'award'], to: '/user/achievement' },
         { label: 'Penilaian Kinerja', icon: ['fas', 'chart-line'], to: '/user/performance-assessment' },
+        { label: 'Staff', icon: ['fas', 'users'], to: '/user/staff' },
         // Add more menu items as needed
       ],
     };

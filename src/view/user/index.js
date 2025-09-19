@@ -10,4 +10,5 @@ export { default as achievement } from './achievement.vue';
 export { default as performanceAssessment } from './performanceAssessment.vue';
 export { default as profile } from './profile/profile.vue';
 export { default as changePassword } from './changePassword.vue';
+export { default as staff } from './staff.vue';
 //export { default as editProfile }  from './profile/editProfile.vue';
